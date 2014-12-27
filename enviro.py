@@ -39,8 +39,8 @@ def parse(content):
 
 
 def updateenv(env, envvars, force=False):
-    for k, v in envvars.items():
-        if force:
-            env[k] = v
-        else:
+    if force:
+        env.update(envvars)
+    else:
+        for k, v in envvars.items():
             env.setdefault(k, v)
