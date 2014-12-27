@@ -5,11 +5,13 @@ Simple environment variable configuration for Python.
 
 [![Build Status](https://travis-ci.org/jwass/envconf.svg?branch=master)](https://travis-ci.org/jwass/envconf)
 
-It is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, or keys to other services should be stored in a separate file that never becomes part of the code repository.
+It is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services should be stored in a separate file that never becomes part of the code repository.
+
+`envconf` is a simple Python module and IPython extension that updates the OS environment variables `os.environ` with the contents of an environment file.
 
 Usage
 -----
-`envconf` is a simple Python module and IPython extension that reads environment files and updates the OS environment variables `os.environ`. To use it, just import `envconf` and call `conf()`. By default it reads `.env`:
+Simply import `envconf` and call `conf()`. By default it reads `.env`:
 ```
 import envconf
 envconf.conf()  # Load .env in the current directory
@@ -62,7 +64,7 @@ The easiest way to install is to use `pip`.
 pip install envconf
 ```
 
-To load the IPython extension every time IPython starts, add `envconf_ipy_ext` in the extensions in your IPython config file (usually in `~/.ipython/profile_default/ipython_config`):
+To load the IPython extension every time IPython starts, add `'envconf_ipy_ext'` to the extensions in your IPython config file (usually `~/.ipython/profile_default/ipython_config`):
 ```
 c.InteractiveShellApp.extensions = [
     'envconf_ipy_ext',
