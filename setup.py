@@ -9,7 +9,7 @@ with codecs_open('README.md', encoding='utf-8') as f:
     long_description = f.read()
 
 
-setup(name='envconf',
+setup(name='enviro',
       version='0.0.1',
       description='Simple configuration of OS environment variables',
       long_description=long_description,
@@ -17,9 +17,9 @@ setup(name='envconf',
       keywords='',
       author='Jacob Wasserman',
       author_email='jwasserman@gmail.com',
-      url='https://github.com/jwass/envconf',
+      url='https://github.com/jwass/enviro',
       license='MIT',
-      py_modules=['envconf'],
+      py_modules=['enviro'],
       include_package_data=True,
       zip_safe=False,
       extras_require={

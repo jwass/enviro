@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-import envconf
+import enviro
 
 
 def test_parse():
@@ -10,7 +10,7 @@ def test_parse():
     #NO_ENV_VAR3=var3_value
     """
 
-    d = envconf.parse(content)
+    d = enviro.parse(content)
     expected = {'ENV_VAR1': 'var1_value',
                 'ENV_VAR2': 'var2_value'}
     assert d == expected
@@ -26,7 +26,7 @@ def test_update_no_force():
     expected = env.copy()
     expected['ENV_VAR2'] = 'var2_value'
 
-    envconf.updateenv(env, d)
+    enviro.updateenv(env, d)
 
     assert env == expected
 
@@ -41,6 +41,6 @@ def test_update_force():
     expected = d.copy()
     expected['ENV_VAR3'] = 'var3_value'
 
-    envconf.updateenv(env, d, force=True)
+    enviro.updateenv(env, d, force=True)
 
     assert env == d

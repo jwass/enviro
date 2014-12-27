@@ -1,38 +1,38 @@
-envconf
+enviro
 =======
 
 Simple environment variable configuration for Python.
 
-[![Build Status](https://travis-ci.org/jwass/envconf.svg?branch=master)](https://travis-ci.org/jwass/envconf)
+[![Build Status](https://travis-ci.org/jwass/enviro.svg?branch=master)](https://travis-ci.org/jwass/enviro)
 
 It is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services should be stored in a separate file that never becomes part of the code repository.
 
-`envconf` is a simple Python module and IPython extension that updates the OS environment variables `os.environ` with the contents of an environment file.
+`enviro` is a simple Python module and IPython extension that updates the OS environment variables `os.environ` with the contents of an environment file.
 
 Usage
 -----
-Simply import `envconf` and call `conf()`. By default it reads `.env`:
+Simply import `enviro` and call `conf()`. By default it reads `.env`:
 ```
-import envconf
-envconf.conf()  # Load .env in the current directory
+import enviro
+enviro.conf()  # Load .env in the current directory
 ```
 
 Any other file may also be specified:
 ```
-envconf.conf('production.env')
+enviro.conf('production.env')
 ```
 
 IPython Extension
 -----------------
-`envconf` also provides an IPython extension so that it is always easily available as a line magic function without the need to import:
+`enviro` also provides an IPython extension so that it is always easily available as a line magic function without the need to import:
 ```
 $ ipython
 
-In [1]: %envconf
+In [1]: %enviro
 ```
 As above, it reads `.env` in the current directory by default, but an alternate file can be specified on the line:
 ```
-In [1]: %envconf production.env
+In [1]: %enviro production.env
 ```
 
 Example
@@ -45,10 +45,10 @@ DATABASE_URI = postgres://user:password@host/dbname
 ```
 
 ```
->>> import envconf
+>>> import enviro
 >>> import os
 
->>> envconf.conf()
+>>> enviro.conf()
 >>> os.environ['SERVICE_API_KEY']
 'abc123'
 >>> os.environ['SERVICE_API_SECRET']
@@ -61,19 +61,19 @@ Installation
 ------------
 The easiest way to install is to use `pip`.
 ```
-pip install envconf
+pip install enviro
 ```
 
-To load the IPython extension every time IPython starts, add `'envconf_ipy_ext'` to the extensions in your IPython config file (usually `~/.ipython/profile_default/ipython_config`):
+To load the IPython extension every time IPython starts, add `'enviro_ipy_ext'` to the extensions in your IPython config file (usually `~/.ipython/profile_default/ipython_config`):
 ```
 c.InteractiveShellApp.extensions = [
-    'envconf_ipy_ext',
+    'enviro_ipy_ext',
 ]
 ```
 and
 ```
 c.TerminalIPythonApp.extensions = [
-    'envconf_ipy_ext',
+    'enviro_ipy_ext',
 ]
 ```
 
