@@ -1,23 +1,25 @@
 enviro
 =======
 
-Simple environment variable configuration for Python.
+Simple Python module and IPython extension for configuring OS environment variables.
 
 [![Build Status](https://travis-ci.org/jwass/enviro.svg?branch=master)](https://travis-ci.org/jwass/enviro)
 
-It is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services should be stored in a separate file that never becomes part of the code repository.
+In web app and software-as-a-service development, it is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services (the config) should be stored in a separate file, never part of the code repository.
 
-`enviro` is a simple Python module and IPython extension that updates the OS environment variables `os.environ` with the contents of an environment file.
+This practice should be extended to analysis and interactive environments. 
+
+`enviro` (pronounced en-vye-ro) is a simple Python module and IPython extension that updates the OS environment variables `os.environ` with the contents of an environment file - lines containing key=value pairs.
 
 Usage
 -----
 Simply import `enviro` and call `conf()`. By default it reads `.env`:
 ```
 import enviro
-enviro.conf()  # Load .env in the current directory
+enviro.conf()  # Load contents of .env into os.environ
 ```
 
-Any other file may also be specified:
+A different file may be specified:
 ```
 enviro.conf('production.env')
 ```
@@ -64,7 +66,7 @@ The easiest way to install is to use `pip`.
 pip install enviro
 ```
 
-To load the IPython extension every time IPython starts, add `'enviro_ipy_ext'` to the extensions in your IPython config file (usually `~/.ipython/profile_default/ipython_config`):
+To load the IPython extension every time IPython starts, add `'enviro_ipy_ext'` to the extensions in your IPython config file (usually `~/.ipython/profile_default/ipython_config.py`):
 ```
 c.InteractiveShellApp.extensions = [
     'enviro_ipy_ext',
