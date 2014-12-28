@@ -1,15 +1,15 @@
 enviro
-=======
+======
 
-Simple Python module and IPython extension for configuring OS environment variables.
+Simple Python module and IPython extension for setting OS environment variables from config files.
 
 [![Build Status](https://travis-ci.org/jwass/enviro.svg?branch=master)](https://travis-ci.org/jwass/enviro)
 
-In web app and software-as-a-service development, it is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services (the config) should be stored in a separate file, never part of the code repository.
+In web app and software-as-a-service development, it is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services should reside in a separate file, never as part of the code repository. The application code should read these values from OS environment variables, which are set by the execution environment. Tools like foreman and honcho read environment files - lines containing key=value settings - and update the OS environment prior to running the server, workers, etc.
 
-This practice should be extended to analysis and interactive environments. 
+This practice should be extended to analysis and interactive environments. Not only is it a good idea to always separate config values from the code, but analysis tools often need to have the same configuration as a specific deployment.
 
-`enviro` (pronounced en-vye-ro) is a simple Python module and IPython extension that updates the OS environment variables `os.environ` with the contents of an environment file - lines containing key=value pairs.
+`enviro` (pronounced en-vye-ro) is a simple Python module and IPython extension that can set OS environment variables `os.environ` from environment files.
 
 Usage
 -----
@@ -78,6 +78,8 @@ c.TerminalIPythonApp.extensions = [
     'enviro_ipy_ext',
 ]
 ```
+
+To load the IPython extension without modifying your `ipython_config.py` you can run `%load_ext enviro_ipy_ext` to expose the `%enviro` magic function, although that's just as easy as importing it directly so best to add it to your config and avoid this step.
 
 See also
 --------
