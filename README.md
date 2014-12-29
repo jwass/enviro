@@ -7,7 +7,7 @@ Simple Python module and IPython extension for setting OS environment variables 
 
 In web app and software-as-a-service development, it is widely considered best programming practice to separate application code from its configuration. Temporary or sensitive values such as authorization credentials, database handles, and keys to other services should reside in a separate file, never as part of the code repository. The application code should read these values from OS environment variables, which are set by the execution environment. Tools like foreman and honcho read environment files - lines containing key=value settings - and update the OS environment prior to running the server, workers, etc.
 
-This practice should be extended to analysis and interactive environments. Not only is it a good idea to always separate config values from the code, but analysis tools often need to have the same configuration as a specific deployment.
+This practice should be extended to analysis and interactive environments. Not only is it a good idea to separate config values from the code, but analysis tools often need to be configured from the same source as a deployment, for debugging or other analysis.
 
 `enviro` (pronounced en-vye-ro) is a simple Python module and IPython extension that can set OS environment variables `os.environ` from environment files.
 
